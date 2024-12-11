@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+void printMultiplicationTable(int start, int end) {
+    if (start <= end) {
+        for (int i = start; i <= end; i++) {
+            printf("%d단:\n", i);
+            for (int j = 1; j <= 9; j++) {
+                printf("%d x %d = %d\n", i, j, i * j);
+            }
+            printf("\n");
+        }
+    }
+    else {
+        for (int i = start; i >= end; i--) {
+            printf("%d단:\n", i);
+            for (int j = 1; j <= 9; j++) {
+                printf("%d x %d = %d\n", i, j, i * j);
+            }
+            printf("\n");
+        }
+    }
+}
+
+void printPattern(int n) {
+    for (int i = 1; i <= n; i++) {
+        for (int j = 0; j < n - i; j++) {
+            printf(" ");
+        }
+        for (int k = 0; k < 2 * i - 1; k++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int start, end, n;
+
+    while (1) {
+        printf("첫 번째 값을 입력하세요 (2~9): ");
+        if (scanf_s("%d", &start) != 1 || start < 2 || start > 9) {
+            printf("프로그램 종료\n");
+            break;
+        }
+        while (getchar() != '\n'); 
+
+        printf("두 번째 값을 입력하세요 (2~9): ");
+        if (scanf_s("%d", &end) != 1 || end < 2 || end > 9) {
+            printf("프로그램 종료\n");
+            break;
+        }
+        while (getchar() != '\n'); 
+
+        printMultiplicationTable(start, end);
+
+        printf("정수 값을 입력하세요 (0 이하 입력 시 프로그램 종료): ");
+        if (scanf_s("%d", &n) != 1 || n <= 0) {
+            printf("프로그램 종료\n");
+            break;
+        }
+        while (getchar() != '\n'); 
+
+        printPattern(n);
+    }
+
+    return 0;
+}
